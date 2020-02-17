@@ -1,4 +1,4 @@
-<div class="row">
+{{!-- <div class="row">
     <div class="col-md-8">
         <div data-id="{{_id}}">
             <h3>Title: {{title}}</h3>
@@ -8,6 +8,17 @@
     </div>
     <div class="col-md-4">
         <button type="button" data-id="{{_id}}" class="btn btn-primary add-comment">Add/View Comments</button>
+        <button type="button" data-id="{{_id}}" class="btn btn-danger delete-article">Delete</button>
+    </div>
+</div> --}}
+
+<div class="card" data-id="{{id}}">
+    <h5 class="card-header">{{title}}</h5>
+    <div class="card-body">
+        <p class="card-text">{{summary}}</p>
+        <a href="https://www.nytimes.com{{link}}" target="_blank" class="btn btn-primary">View Article</a>
+        <button type="button" data-id="{{_id}}" class="btn btn-primary add-comment">Add/View Comments</button>
+        <button type="button" data-id="{{_id}}" class="btn btn-danger delete-article">Delete</button>
     </div>
 </div>
 
@@ -23,32 +34,32 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-10">
-                        {{#if comment}}
-                        {{#each comment}}
-                        <p>Previous comments: {{commentBody}}</p>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-danger delete-comment" data-id={{_id}}
-                                data-article-id={{article}}>X</button>
+                {{#if comment}}
+                    {{#each comment}}
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p>Previous comments: {{commentBody}}</p>
+                                <button type="button" class="btn btn-danger delete-comment" data-id={{_id}}>X</button>
+                            </div>
                         </div>
-                        {{/each}}
-                        {{else}}
-                        <p>No comments yet.</p>
-                        {{/if}}
+                    {{/each}}
+                {{else}}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p>No comments yet.</p>
+                        </div>
                     </div>
-                </div>
-                
-
-                <div class="form-group">
-                    <textarea id="new-comment" data-id="{{_id}}" class="form-control" rows="4"
-                        placeholder="New Comment"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary submit-comment" data-id="{{_id}}">Add Comment</button>
-            </div>
+                {{/if}}
+        <div class="form-group">
+            <textarea id="new-comment" data-id="{{_id}}" class="form-control" rows="4"
+                placeholder="New Comment"></textarea>
         </div>
     </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary submit-comment" data-id="{{_id}}">Add Comment</button>
+    </div>
+</div>
+</div>
+</div>
 </div>

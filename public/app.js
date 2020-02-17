@@ -39,3 +39,26 @@ $(document.body).on("click", ".submit-comment", function(event){
         }
     });
 });
+
+//Delete comment
+$(".delete-comment").on("click", function(event){
+    event.preventDefault();
+    var id = $(this).data("id");
+
+    $.ajax({
+        method: "DELETE",
+        url: "/comments/delete/" + id
+    }).then(function(){
+        window.location = "/saved"
+    });
+});
+
+$(".delete-article").on("click", function(event){
+    var id = $(this).data("id");
+    $.ajax({
+        method: "DELETE",
+        url: "/articles/saved/delete/" + id
+    }).then(function(){
+        window.location = "/saved"
+    });
+});

@@ -83,6 +83,16 @@ app.post("/articles/saved/:id", function(req, res){
 });
 
 //Delete article
+app.delete("/articles/saved/delete/:id", function(req, res){
+    db.Article.findOneAndRemove({_id: req.params.id})
+    .then(function(dbArticle){
+        return db.Article.findOneAndUpdate({_id: req.params.id}, { $pull: { article: dbArticle._id}});
+    }).then(function(dbArticle){
+        res.send(dbArticle)
+    }).catch(function(err){
+        console.log(err);
+    });
+});
 
 //Add Comment
 app.post("/comments/saved/:id", function(req, res){
@@ -99,9 +109,15 @@ app.post("/comments/saved/:id", function(req, res){
 });
 
 //Delete comment
-app.post("/comments/delete/:id", function(req, res){
-    db.Comment.findOneAndRemove
-})
-
+app.delete("/comments/delete/:id", function(req, res){
+    db.Comment.findOneAndRemove({_id: req.params.id})
+    .then(function(dbComment){
+        return db.Article.findOneAndUpdate({_id: req.params.id}, { $pull: { comment: dbComment._id}});
+    }).then(function(dbComment){
+        res.send(dbComment)
+    }).catch(function(err){
+        console.log(err);
+    });
+});
 
 };
