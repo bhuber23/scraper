@@ -4,7 +4,7 @@ $("#scrape").on("click", function(event){
         method: "GET",
         url: "/scrape"
     }).then(function(){
-        window.location.replace = "/"
+        Location.reload();
     });
 });
 
