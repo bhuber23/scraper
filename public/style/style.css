@@ -1,0 +1,29 @@
+body {
+    background-image: url(/images/newspaper.jpg);
+    background-repeat: repeat;
+    background-attachment: fixed;
+
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    margin-top: 15px;
+}
+
+.card {
+    margin-bottom: 15px;
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar-brand, .nav-link, .navbar {
+    color: white!important;
+    background-color: black!important;
+}
+
+.card-header {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
