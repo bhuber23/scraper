@@ -2,10 +2,10 @@
     <h5 class="card-header">{{title}}</h5>
     <div class="card-body">
         <p class="card-text">{{summary}}</p>
-        <a href="https://www.nytimes.com{{link}}" target="_blank" class="btn btn-primary btn-sm">View Article</a>
-        <button type="button" data-id="{{_id}}" class="btn btn-primary btn-sm add-comment">Add/View
+        <a href="https://www.nytimes.com{{link}}" target="_blank" class="btn btn-secondary btn-sm">View Article</a>
+        <button type="button" data-id="{{_id}}" class="btn btn-info btn-sm add-comment">Add/View
             Comments</button>
-        <button type="button" data-id="{{_id}}" class="btn btn-danger btn-sm delete-article">Delete</button>
+        <button type="button" data-id="{{_id}}" class="btn btn-dark btn-sm delete-article">Delete</button>
     </div>
 </div>
 
@@ -22,13 +22,11 @@
             </div>
             <div class="modal-body">
                 {{#if comment}}
+                <p>Previous Comments:</p>
                 {{#each comment}}
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <p>Previous comments: {{commentBody}}</p>
-                        <button type="button" class="btn btn-danger delete-comment" data-id={{_id}}>X</button>
-                    </div>
-                </div>
+                    <p class="comments"><button type="button" class="btn btn-dark btn-sm delete-comment"
+                            data-id={{_id}}>Delete</button>{{commentBody}}</p>
+            
                 {{/each}}
                 {{else}}
                 <div class="panel panel-default">
@@ -44,7 +42,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary submit-comment" data-id="{{_id}}">Add Comment</button>
+                <button type="button" class="btn btn-info submit-comment" data-id="{{_id}}">Add Comment</button>
             </div>
         </div>
     </div>
